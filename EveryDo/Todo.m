@@ -22,7 +22,7 @@
 
 - (instancetype)init
 {
-    return [self initWithTitle:@"Title" todoDescription:@"Description" priorityNumber:0];
+    return [self initWithTitle:@"Title" todoDescription:@"Description" priorityNumber:@1];
 }
 
 @end

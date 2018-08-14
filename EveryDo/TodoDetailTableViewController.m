@@ -32,10 +32,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    self.isEditMode = [self.delegate TodoDetailTableViewControllerDelegateIsEditMode:self];
-    
-}
 
 #pragma mark - Table view data source
 

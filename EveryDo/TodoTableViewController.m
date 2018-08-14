@@ -13,10 +13,9 @@
 #import "TodoDetailTableViewController.h"
 
 @interface TodoTableViewController ()
-@property (nonatomic, strong) NSArray <Todo*> *todoArray;
+@property (nonatomic, strong) NSMutableArray <Todo*> *todoArray;
 @property (strong, nonatomic) IBOutlet TodoTableView *todoTableView;
 @property (strong, nonatomic) Todo *currentTodo;
-@property (assign, nonatomic) BOOL isEditMode;
 
 @end
 
@@ -30,11 +29,11 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    _todoArray = @[
+    _todoArray = [@[
                    [[Todo alloc]initWithTitle:@"Grocery" todoDescription:@"Eggs, Bread, Tomato" priorityNumber:@1],
                    [[Todo alloc]initWithTitle:@"Gym" todoDescription:@"Benchpress, shoulderpress" priorityNumber:@2],
                    [[Todo alloc]initWithTitle:@"Homework" todoDescription:@"assignment 1, assignment2" priorityNumber:@1]
-                   ];
+                   ] mutableCopy];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -139,17 +138,15 @@
         
         TodoDetailTableViewController* controller = (TodoDetailTableViewController*)segue.destinationViewController;
         controller.delegate = self;
-        self.isEditMode = NO;
-//        NSDictionary *userInfo = @{@"currentTodo": currentTodo};
-//        [[NSNotificationCenter defaultCenter]postNotificationName:@"setCurrentTodoObject" object:self userInfo:userInfo];
+
     }
     else if ([segue.identifier isEqualToString:@"segueAddTodoDetail"])
     {
-        TodoDetailTableViewController* controller = (TodoDetailTableViewController*)segue.destinationViewController;
+        UINavigationController *navigationController = segue.destinationViewController;
+        AddTodoViewController* controller = [navigationController viewControllers][0];
+        
         controller.delegate = self;
         
-        self.isEditMode = YES;
-        self.currentTodo = [[Todo alloc]init];
     }
 }
 // #MARK - TodoDetailTableViewControllerDelegate delegate methods
@@ -157,9 +154,16 @@
     return self.currentTodo;
 }
 
--(BOOL)TodoDetailTableViewControllerDelegateIsEditMode:(TodoDetailTableViewController *)controller{
-    
-    return self.isEditMode;
+-(void)addTodoViewController:(AddTodoViewController *)controller didAddTodo:(Todo *)todo{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.todoArray addObject:todo];
+//    [self.tableView reloadData];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.todoArray count] - 1) inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+-(void)cancelAddTodoViewController:(AddTodoViewController *)controller{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 // MARK: - IB Action methods

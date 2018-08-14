@@ -20,6 +20,7 @@
 		917C1E79212356B500185F9B /* TodoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E78212356B500185F9B /* TodoTableViewController.m */; };
 		917C1E7C212369AF00185F9B /* TodoDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E7B212369AF00185F9B /* TodoDetailTableViewController.m */; };
 		917C1E7F2123735400185F9B /* TodoDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E7E2123735400185F9B /* TodoDetailTableViewCell.m */; };
+		917C1E85212397BD00185F9B /* AddTodoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E84212397BD00185F9B /* AddTodoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		917C1E7B212369AF00185F9B /* TodoDetailTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoDetailTableViewController.m; sourceTree = "<group>"; };
 		917C1E7D2123735400185F9B /* TodoDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodoDetailTableViewCell.h; sourceTree = "<group>"; };
 		917C1E7E2123735400185F9B /* TodoDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoDetailTableViewCell.m; sourceTree = "<group>"; };
+		917C1E83212397BD00185F9B /* AddTodoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddTodoViewController.h; sourceTree = "<group>"; };
+		917C1E84212397BD00185F9B /* AddTodoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddTodoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 		917C1E3B21232F8300185F9B /* EveryDo */ = {
 			isa = PBXGroup;
 			children = (
+				917C1E83212397BD00185F9B /* AddTodoViewController.h */,
+				917C1E84212397BD00185F9B /* AddTodoViewController.m */,
 				917C1E3C21232F8300185F9B /* AppDelegate.h */,
 				917C1E3D21232F8300185F9B /* AppDelegate.m */,
 				917C1E6E2123301100185F9B /* Todo.h */,
@@ -294,6 +299,7 @@
 				917C1E73212352C600185F9B /* TodoTableView.m in Sources */,
 				917C1E3E21232F8300185F9B /* AppDelegate.m in Sources */,
 				917C1E79212356B500185F9B /* TodoTableViewController.m in Sources */,
+				917C1E85212397BD00185F9B /* AddTodoViewController.m in Sources */,
 				917C1E702123301200185F9B /* Todo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

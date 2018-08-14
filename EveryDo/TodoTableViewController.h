@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "TodoDetailTableViewController.h"
+#import "AddTodoViewController.h"
 
-@interface TodoTableViewController : UITableViewController <TodoDetailTableViewControllerDelegate>
+@interface TodoTableViewController : UITableViewController <TodoDetailTableViewControllerDelegate, AddTodoViewControllerDelegate>
 
 @end
