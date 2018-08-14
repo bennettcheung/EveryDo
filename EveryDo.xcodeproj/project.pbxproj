@@ -18,6 +18,8 @@
 		917C1E73212352C600185F9B /* TodoTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E72212352C600185F9B /* TodoTableView.m */; };
 		917C1E76212352D900185F9B /* TodoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E75212352D900185F9B /* TodoTableViewCell.m */; };
 		917C1E79212356B500185F9B /* TodoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E78212356B500185F9B /* TodoTableViewController.m */; };
+		917C1E7C212369AF00185F9B /* TodoDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E7B212369AF00185F9B /* TodoDetailTableViewController.m */; };
+		917C1E7F2123735400185F9B /* TodoDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E7E2123735400185F9B /* TodoDetailTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,10 @@
 		917C1E75212352D900185F9B /* TodoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTableViewCell.m; sourceTree = "<group>"; };
 		917C1E77212356B500185F9B /* TodoTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodoTableViewController.h; sourceTree = "<group>"; };
 		917C1E78212356B500185F9B /* TodoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTableViewController.m; sourceTree = "<group>"; };
+		917C1E7A212369AF00185F9B /* TodoDetailTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodoDetailTableViewController.h; sourceTree = "<group>"; };
+		917C1E7B212369AF00185F9B /* TodoDetailTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoDetailTableViewController.m; sourceTree = "<group>"; };
+		917C1E7D2123735400185F9B /* TodoDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodoDetailTableViewCell.h; sourceTree = "<group>"; };
+		917C1E7E2123735400185F9B /* TodoDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoDetailTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +121,12 @@
 				917C1E6E2123301100185F9B /* Todo.h */,
 				917C1E6F2123301200185F9B /* Todo.m */,
 				917C1E4221232F8300185F9B /* Main.storyboard */,
+				917C1E7D2123735400185F9B /* TodoDetailTableViewCell.h */,
+				917C1E7E2123735400185F9B /* TodoDetailTableViewCell.m */,
 				917C1E77212356B500185F9B /* TodoTableViewController.h */,
 				917C1E78212356B500185F9B /* TodoTableViewController.m */,
+				917C1E7A212369AF00185F9B /* TodoDetailTableViewController.h */,
+				917C1E7B212369AF00185F9B /* TodoDetailTableViewController.m */,
 				917C1E71212352C600185F9B /* TodoTableView.h */,
 				917C1E74212352D900185F9B /* TodoTableViewCell.h */,
 				917C1E75212352D900185F9B /* TodoTableViewCell.m */,
@@ -277,7 +287,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				917C1E7F2123735400185F9B /* TodoDetailTableViewCell.m in Sources */,
 				917C1E76212352D900185F9B /* TodoTableViewCell.m in Sources */,
+				917C1E7C212369AF00185F9B /* TodoDetailTableViewController.m in Sources */,
 				917C1E4C21232F8500185F9B /* main.m in Sources */,
 				917C1E73212352C600185F9B /* TodoTableView.m in Sources */,
 				917C1E3E21232F8300185F9B /* AppDelegate.m in Sources */,

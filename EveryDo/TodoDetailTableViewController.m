@@ -1,25 +1,21 @@
 //
-//  TodoTableViewController.m
+//  TodoDetailTableViewController.m
 //  EveryDo
 //
 //  Created by Bennett on 2018-08-14.
 //  Copyright © 2018 Bennett. All rights reserved.
 //
 
-#import "TodoTableViewController.h"
-#import "Todo.h"
-#import "TodoTableViewCell.h"
-#import "TodoTableView.h"
 #import "TodoDetailTableViewController.h"
+#import "Todo.h"
+#import "TodoDetailTableViewCell.h"
 
-@interface TodoTableViewController ()
-@property (nonatomic, strong) NSArray <Todo*> *todoArray;
-@property (strong, nonatomic) IBOutlet TodoTableView *todoTableView;
-@property (strong, nonatomic) Todo *currentTodo;
+@interface TodoDetailTableViewController ()
 
 @end
 
-@implementation TodoTableViewController
+@implementation TodoDetailTableViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,11 +25,6 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    _todoArray = @[
-                   [[Todo alloc]initWithTitle:@"Grocery" todoDescription:@"Eggs, Bread, Tomato" priorityNumber:@1],
-                   [[Todo alloc]initWithTitle:@"Gym" todoDescription:@"Benchpress, shoulderpress" priorityNumber:@2],
-                   [[Todo alloc]initWithTitle:@"Homework" todoDescription:@"assignment 1, assignment2" priorityNumber:@1]
-                   ];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,29 +39,22 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.todoArray count];
+    return 1;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TodoDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TodoDetailViewCell" forIndexPath:indexPath];
     
-    TodoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TodoCellID" forIndexPath:indexPath];
-    
-    NSInteger row = indexPath.row;
-    Todo *todo = self.todoArray[row];
-    cell.titleLabel.text = todo.title;
-    cell.descriptionLabel.text = todo.todoDescription;
-    cell.priorityLabel.text = [todo.priorityNumber stringValue];
+    self.currentTodo = [self.delegate TodoDetailTableViewControllerDelegateGetCurrentToDo:self];
+    cell.titleLabel.text = self.currentTodo.title;
+    cell.descriptionTextView.text = self.currentTodo.todoDescription;
+    cell.priorityLabel.text = [NSString stringWithFormat:@"%@", self.currentTodo.priorityNumber];
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    // Segue to other view controller
-    [self performSegueWithIdentifier:@"segueShowTodoDetail" sender:self];
-    
-}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -108,24 +92,12 @@
 /*
 #pragma mark - Navigation
 
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
 */
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqualToString:@"segueShowTodoDetail"])
-    {
-        NSIndexPath *selectedPath = self.todoTableView.indexPathForSelectedRow;
-        self.currentTodo = self.todoArray[selectedPath.row];
-        
-        TodoDetailTableViewController* controller = (TodoDetailTableViewController*)segue.destinationViewController;
-        controller.delegate = self;
-        
-//        NSDictionary *userInfo = @{@"currentTodo": currentTodo};
-//        [[NSNotificationCenter defaultCenter]postNotificationName:@"setCurrentTodoObject" object:self userInfo:userInfo];
-    }
-}
-
--(Todo*)TodoDetailTableViewControllerDelegateGetCurrentToDo:(id)controller{
-    return self.currentTodo;
-}
 
 @end
