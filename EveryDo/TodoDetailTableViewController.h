@@ -14,6 +14,7 @@
 
 @protocol TodoDetailTableViewControllerDelegate <NSObject>
 -(Todo*)TodoDetailTableViewControllerDelegateGetCurrentToDo:(TodoDetailTableViewController*)controller;
+-(BOOL)TodoDetailTableViewControllerDelegateIsEditMode:(TodoDetailTableViewController*)controller;
 @end
 
 @interface TodoDetailTableViewController : UITableViewController

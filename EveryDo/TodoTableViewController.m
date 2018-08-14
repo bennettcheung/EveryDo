@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSArray <Todo*> *todoArray;
 @property (strong, nonatomic) IBOutlet TodoTableView *todoTableView;
 @property (strong, nonatomic) Todo *currentTodo;
+@property (assign, nonatomic) BOOL isEditMode;
 
 @end
 
@@ -61,6 +62,18 @@
     cell.titleLabel.text = todo.title;
     cell.descriptionLabel.text = todo.todoDescription;
     cell.priorityLabel.text = [todo.priorityNumber stringValue];
+    if (todo.isCompleted)
+    {
+        [cell.titleLabel setTextColor:[UIColor lightGrayColor]];
+        [cell.descriptionLabel setTextColor:[UIColor lightGrayColor]];
+        [cell.priorityLabel setTextColor:[UIColor lightGrayColor]];
+    }
+    else
+    {
+        [cell.titleLabel setTextColor:[UIColor blackColor]];
+        [cell.descriptionLabel setTextColor:[UIColor blackColor]];
+        [cell.priorityLabel setTextColor:[UIColor blackColor]];
+    }
     
     return cell;
 }
@@ -70,6 +83,14 @@
     // Segue to other view controller
     [self performSegueWithIdentifier:@"segueShowTodoDetail" sender:self];
     
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger row = indexPath.row;
+    Todo *todo = self.todoArray[row];
+    if (todo.isCompleted)
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 /*
 // Override to support conditional editing of the table view.
@@ -118,14 +139,42 @@
         
         TodoDetailTableViewController* controller = (TodoDetailTableViewController*)segue.destinationViewController;
         controller.delegate = self;
-        
+        self.isEditMode = NO;
 //        NSDictionary *userInfo = @{@"currentTodo": currentTodo};
 //        [[NSNotificationCenter defaultCenter]postNotificationName:@"setCurrentTodoObject" object:self userInfo:userInfo];
     }
+    else if ([segue.identifier isEqualToString:@"segueAddTodoDetail"])
+    {
+        TodoDetailTableViewController* controller = (TodoDetailTableViewController*)segue.destinationViewController;
+        controller.delegate = self;
+        
+        self.isEditMode = YES;
+        self.currentTodo = [[Todo alloc]init];
+    }
 }
-
+// #MARK - TodoDetailTableViewControllerDelegate delegate methods
 -(Todo*)TodoDetailTableViewControllerDelegateGetCurrentToDo:(id)controller{
     return self.currentTodo;
 }
+
+-(BOOL)TodoDetailTableViewControllerDelegateIsEditMode:(TodoDetailTableViewController *)controller{
+    
+    return self.isEditMode;
+}
+
+// MARK: - IB Action methods
+
+- (IBAction)setTodoComplete:(UISwipeGestureRecognizer *)sender {
+    
+    CGPoint touch = [sender locationInView:self.tableView];
+
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:touch];
+    NSLog(@"swipe triggered - Path %@", indexPath);
+    self.currentTodo = self.todoArray[indexPath.row];
+    self.currentTodo.isCompleted = YES;
+    
+    [self.tableView reloadData];
+}
+
 
 @end

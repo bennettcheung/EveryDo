@@ -11,7 +11,7 @@
 #import "TodoDetailTableViewCell.h"
 
 @interface TodoDetailTableViewController ()
-
+@property (nonatomic, assign)BOOL isEditMode;
 @end
 
 @implementation TodoDetailTableViewController
@@ -32,6 +32,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    self.isEditMode = [self.delegate TodoDetailTableViewControllerDelegateIsEditMode:self];
+    
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -50,6 +55,18 @@
     cell.titleLabel.text = self.currentTodo.title;
     cell.descriptionTextView.text = self.currentTodo.todoDescription;
     cell.priorityLabel.text = [NSString stringWithFormat:@"%@", self.currentTodo.priorityNumber];
+    cell.priorityStepper.value = [self.currentTodo.priorityNumber doubleValue];
+    
+    if (self.isEditMode){
+        cell.titleTextField.hidden = NO;
+        cell.priorityStepper.hidden = NO;
+        cell.titleLabel.hidden = YES;
+    }
+    else{
+        cell.titleTextField.hidden = YES;
+        cell.priorityStepper.hidden = YES;
+        cell.titleLabel.hidden = NO;
+    }
     
     return cell;
 }
@@ -98,6 +115,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 
 @end
