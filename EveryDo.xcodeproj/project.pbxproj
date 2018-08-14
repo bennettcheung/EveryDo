@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		917C1E3E21232F8300185F9B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E3D21232F8300185F9B /* AppDelegate.m */; };
-		917C1E4121232F8300185F9B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E4021232F8300185F9B /* ViewController.m */; };
 		917C1E4421232F8300185F9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917C1E4221232F8300185F9B /* Main.storyboard */; };
 		917C1E4621232F8500185F9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 917C1E4521232F8500185F9B /* Assets.xcassets */; };
 		917C1E4921232F8500185F9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917C1E4721232F8500185F9B /* LaunchScreen.storyboard */; };
 		917C1E4C21232F8500185F9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E4B21232F8500185F9B /* main.m */; };
 		917C1E5621232F8500185F9B /* EveryDoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E5521232F8500185F9B /* EveryDoTests.m */; };
 		917C1E6121232F8500185F9B /* EveryDoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E6021232F8500185F9B /* EveryDoUITests.m */; };
+		917C1E702123301200185F9B /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E6F2123301200185F9B /* Todo.m */; };
+		917C1E73212352C600185F9B /* TodoTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E72212352C600185F9B /* TodoTableView.m */; };
+		917C1E76212352D900185F9B /* TodoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E75212352D900185F9B /* TodoTableViewCell.m */; };
+		917C1E79212356B500185F9B /* TodoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917C1E78212356B500185F9B /* TodoTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +41,6 @@
 		917C1E3921232F8300185F9B /* EveryDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EveryDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		917C1E3C21232F8300185F9B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		917C1E3D21232F8300185F9B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		917C1E3F21232F8300185F9B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		917C1E4021232F8300185F9B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		917C1E4321232F8300185F9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		917C1E4521232F8500185F9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		917C1E4821232F8500185F9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +52,14 @@
 		917C1E5C21232F8500185F9B /* EveryDoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EveryDoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		917C1E6021232F8500185F9B /* EveryDoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EveryDoUITests.m; sourceTree = "<group>"; };
 		917C1E6221232F8500185F9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		917C1E6E2123301100185F9B /* Todo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Todo.h; sourceTree = "<group>"; };
+		917C1E6F2123301200185F9B /* Todo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Todo.m; sourceTree = "<group>"; };
+		917C1E71212352C600185F9B /* TodoTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodoTableView.h; sourceTree = "<group>"; };
+		917C1E72212352C600185F9B /* TodoTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTableView.m; sourceTree = "<group>"; };
+		917C1E74212352D900185F9B /* TodoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodoTableViewCell.h; sourceTree = "<group>"; };
+		917C1E75212352D900185F9B /* TodoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTableViewCell.m; sourceTree = "<group>"; };
+		917C1E77212356B500185F9B /* TodoTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodoTableViewController.h; sourceTree = "<group>"; };
+		917C1E78212356B500185F9B /* TodoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,9 +112,15 @@
 			children = (
 				917C1E3C21232F8300185F9B /* AppDelegate.h */,
 				917C1E3D21232F8300185F9B /* AppDelegate.m */,
-				917C1E3F21232F8300185F9B /* ViewController.h */,
-				917C1E4021232F8300185F9B /* ViewController.m */,
+				917C1E6E2123301100185F9B /* Todo.h */,
+				917C1E6F2123301200185F9B /* Todo.m */,
 				917C1E4221232F8300185F9B /* Main.storyboard */,
+				917C1E77212356B500185F9B /* TodoTableViewController.h */,
+				917C1E78212356B500185F9B /* TodoTableViewController.m */,
+				917C1E71212352C600185F9B /* TodoTableView.h */,
+				917C1E74212352D900185F9B /* TodoTableViewCell.h */,
+				917C1E75212352D900185F9B /* TodoTableViewCell.m */,
+				917C1E72212352C600185F9B /* TodoTableView.m */,
 				917C1E4521232F8500185F9B /* Assets.xcassets */,
 				917C1E4721232F8500185F9B /* LaunchScreen.storyboard */,
 				917C1E4A21232F8500185F9B /* Info.plist */,
@@ -262,9 +277,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				917C1E4121232F8300185F9B /* ViewController.m in Sources */,
+				917C1E76212352D900185F9B /* TodoTableViewCell.m in Sources */,
 				917C1E4C21232F8500185F9B /* main.m in Sources */,
+				917C1E73212352C600185F9B /* TodoTableView.m in Sources */,
 				917C1E3E21232F8300185F9B /* AppDelegate.m in Sources */,
+				917C1E79212356B500185F9B /* TodoTableViewController.m in Sources */,
+				917C1E702123301200185F9B /* Todo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TodoTableViewController.h
 //  EveryDo
 //
 //  Created by Bennett on 2018-08-14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface TodoTableViewController : UITableViewController
 
 @end
-
