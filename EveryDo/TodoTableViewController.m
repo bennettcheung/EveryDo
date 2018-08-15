@@ -177,7 +177,7 @@
     self.currentTodo = self.todoArray[indexPath.row];
     self.currentTodo.isCompleted = YES;
     
-    [self.tableView reloadData];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 
