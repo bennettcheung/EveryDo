@@ -65,6 +65,7 @@
                             <outlet property="dataSource" destination="yjw-Z2-ZaF" id="cWm-jH-Rdg"/>
                             <outlet property="delegate" destination="yjw-Z2-ZaF" id="bJh-c3-cGQ"/>
                             <outletCollection property="gestureRecognizers" destination="w34-8s-VrX" appends="YES" id="lsr-x9-vMZ"/>
+                            <outletCollection property="gestureRecognizers" destination="JVF-9R-QLh" appends="YES" id="OhC-KJ-3Em"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="yuN-wp-Idd">
@@ -84,6 +85,12 @@
                     <connections>
                         <action selector="setTodoComplete:" destination="yjw-Z2-ZaF" id="K4o-Fo-EGb"/>
                         <outlet property="delegate" destination="Ddo-Ig-K6c" id="Fvq-NV-83F"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="JVF-9R-QLh">
+                    <connections>
+                        <action selector="showDeleteRowButton:" destination="yjw-Z2-ZaF" id="e2H-DB-hmW"/>
+                        <outlet property="delegate" destination="yjw-Z2-ZaF" id="Lg8-d2-44H"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>

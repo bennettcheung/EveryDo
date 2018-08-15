@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSMutableArray <Todo*> *todoArray;
 @property (strong, nonatomic) IBOutlet TodoTableView *todoTableView;
 @property (strong, nonatomic) Todo *currentTodo;
+@property (nonatomic, assign) NSIndexPath *pathToShowDelete;
 
 @end
 
@@ -34,6 +35,7 @@
                    [[Todo alloc]initWithTitle:@"Gym" todoDescription:@"Benchpress, shoulderpress" priorityNumber:@2],
                    [[Todo alloc]initWithTitle:@"Homework" todoDescription:@"assignment 1, assignment2" priorityNumber:@1]
                    ] mutableCopy];
+    [self.todoTableView setEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,6 +53,34 @@
     return [self.todoArray count];
 }
 
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    if (indexPath == self.pathToShowDelete)
+        return UITableViewCellEditingStyleDelete;
+    else
+        return UITableViewCellEditingStyleNone;
+}
+
+-(BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath{
+    return (indexPath == self.pathToShowDelete);
+}
+
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+    Todo* todo = self.todoArray[sourceIndexPath.row];
+    if (todo)
+    {
+        [self.todoArray removeObjectAtIndex:sourceIndexPath.row];
+        [self.todoArray insertObject:todo atIndex:destinationIndexPath.row];
+    }
+    
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.todoArray removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath]  withRowAnimation: UITableViewRowAnimationFade];
+    }
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -173,12 +203,28 @@
     CGPoint touch = [sender locationInView:self.tableView];
 
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:touch];
-    NSLog(@"swipe triggered - Path %@", indexPath);
-    self.currentTodo = self.todoArray[indexPath.row];
-    self.currentTodo.isCompleted = YES;
-    
-    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    if (self.pathToShowDelete)
+    {
+        self.pathToShowDelete = nil;
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    else if (indexPath)
+    {
+        self.currentTodo = self.todoArray[indexPath.row];
+        self.currentTodo.isCompleted = YES;
+        
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 
+- (IBAction)showDeleteRowButton:(UISwipeGestureRecognizer *)sender {
+    CGPoint touch = [sender locationInView:self.tableView];
+    
+    self.pathToShowDelete = [self.tableView indexPathForRowAtPoint:touch];
+    if (self.pathToShowDelete )
+    {
+        [self.tableView reloadRowsAtIndexPaths:@[self.pathToShowDelete] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
 
 @end
