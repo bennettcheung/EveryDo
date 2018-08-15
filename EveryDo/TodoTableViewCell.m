@@ -26,6 +26,7 @@
     self.titleLabel.text = @"";
     self.descriptionLabel.text = @"";
     self.priorityLabel.text = @"";
+    self.deadlineLabel.text = @"";
 }
 
 @end

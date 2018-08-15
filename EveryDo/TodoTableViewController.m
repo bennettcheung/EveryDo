@@ -91,18 +91,22 @@
     cell.titleLabel.text = todo.title;
     cell.descriptionLabel.text = todo.todoDescription;
     cell.priorityLabel.text = [todo.priorityNumber stringValue];
-    if (todo.isCompleted)
+    
+    if (todo.deadline)
     {
-        [cell.titleLabel setTextColor:[UIColor lightGrayColor]];
-        [cell.descriptionLabel setTextColor:[UIColor lightGrayColor]];
-        [cell.priorityLabel setTextColor:[UIColor lightGrayColor]];
+        NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"MMM dd"];
+
+        cell.deadlineLabel.text = [NSString stringWithFormat:@"%@",[formatter stringFromDate:todo.deadline]];
     }
     else
-    {
-        [cell.titleLabel setTextColor:[UIColor blackColor]];
-        [cell.descriptionLabel setTextColor:[UIColor blackColor]];
-        [cell.priorityLabel setTextColor:[UIColor blackColor]];
-    }
+        cell.deadlineLabel.text = @"";
+
+    [cell.titleLabel setTextColor: (todo.isCompleted ? [UIColor lightGrayColor] : [UIColor blackColor])];
+    [cell.descriptionLabel setTextColor:(todo.isCompleted ? [UIColor lightGrayColor] : [UIColor blackColor])];
+    [cell.priorityLabel setTextColor:(todo.isCompleted ? [UIColor lightGrayColor] : [UIColor blackColor])];
+    [cell.deadlineLabel setTextColor:(todo.isCompleted ? [UIColor lightGrayColor] : [UIColor blackColor])];
+
     
     return cell;
 }
@@ -226,5 +230,6 @@
         [self.tableView reloadRowsAtIndexPaths:@[self.pathToShowDelete] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
+
 
 @end

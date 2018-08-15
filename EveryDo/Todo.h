@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString *todoDescription;
 @property (nonatomic, assign) NSNumber *priorityNumber;
 @property (nonatomic, assign) BOOL isCompleted;
+@property (nonatomic, strong) NSDate *deadline;
 
 -(instancetype)initWithTitle:(NSString*)title todoDescription:(NSString*)description priorityNumber:(NSNumber*)priority;
 @end

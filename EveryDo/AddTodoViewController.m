@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UIStepper *priorityStepper;
 @property (weak, nonatomic) IBOutlet UILabel *priorityLabel;
+@property (weak, nonatomic) IBOutlet UIDatePicker *deadlineDatePicker;
 @property (nonatomic, strong) Todo* currentToDo;
 @end
 
@@ -48,6 +49,7 @@
     self.currentToDo.title = self.titleTextField.text;
     self.currentToDo.todoDescription = self.descriptionTextView.text;
     self.currentToDo.priorityNumber = [NSNumber numberWithDouble:self.priorityStepper.value];
+    self.currentToDo.deadline = self.deadlineDatePicker.date;
     
     [self.delegate addTodoViewController:self didAddTodo:self.currentToDo];
 }
@@ -56,6 +58,9 @@
 }
 - (IBAction)priorityChanged:(UIStepper *)sender {
     self.priorityLabel.text = [NSString stringWithFormat:@"%.0f", self.priorityStepper.value];
+}
+- (IBAction)changeDeadline:(UIDatePicker *)sender {
+    self.currentToDo.deadline = sender.date;
 }
 
 
